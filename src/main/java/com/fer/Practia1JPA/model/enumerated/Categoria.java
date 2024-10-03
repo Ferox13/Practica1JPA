@@ -1,4 +1,4 @@
-package com.fer.Practia1JPA.model.enumerated;
+package com.fer.practia1jpa.model.enumerated;
 
 public enum Categoria {
     VIP,
