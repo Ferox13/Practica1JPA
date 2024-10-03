@@ -9,6 +9,10 @@ import com.fer.practia1jpa.model.repositories.IEmpleadosRepository;
 public class EmpleadosService {
 
     @Autowired
-    IEmpleadosRepository empleadosRepository;
+    private IEmpleadosRepository empleadosRepository;
+
+    public EmpleadosService(IEmpleadosRepository empleadosRepository){
+        this.empleadosRepository=empleadosRepository;
+    }
 
 }

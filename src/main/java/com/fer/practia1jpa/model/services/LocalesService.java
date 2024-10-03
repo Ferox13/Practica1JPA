@@ -8,6 +8,11 @@ import com.fer.practia1jpa.model.repositories.ILocalesRepository;
 @Service
 public class LocalesService {
     @Autowired
-    ILocalesRepository localRepository;
+    private ILocalesRepository localRepository;
+
+    public LocalesService(ILocalesRepository localRepository) {
+        this.localRepository = localRepository;
+    }
+
 
 }

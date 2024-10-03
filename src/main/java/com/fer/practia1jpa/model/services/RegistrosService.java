@@ -8,6 +8,11 @@ import com.fer.practia1jpa.model.repositories.IRegistroRepository;
 @Service
 public class RegistrosService {
     @Autowired
-    IRegistroRepository registroRepository;
+    private IRegistroRepository registroRepository;
+
+    public RegistrosService(IRegistroRepository registroRepository) {
+        this.registroRepository = registroRepository;
+    }
+    
 
 }

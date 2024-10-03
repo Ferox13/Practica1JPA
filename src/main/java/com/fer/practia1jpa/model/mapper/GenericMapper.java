@@ -2,7 +2,10 @@ package com.fer.practia1jpa.model.mapper;
 
 import java.lang.reflect.Field;
 
+import java.util.List;
 import org.springframework.stereotype.Component;
+import java.util.stream.Collectors;
+
 @Component
 public class GenericMapper {
 
@@ -26,6 +29,20 @@ public class GenericMapper {
         } catch (Exception e) {
             throw new RuntimeException("Error al mapear Entity a DTO", e);
         }
+    }
+
+    // Convertir lista de DTOs a lista de Entities
+    public static <D, E> List<E> mapToEntityList(List<D> dtoList, Class<E> entityClass) {
+        return dtoList.stream()
+                .map(dto -> mapToEntity(dto, entityClass))
+                .collect(Collectors.toList());
+    }
+
+    // Convertir lista de Entities a lista de DTOs
+    public static <E, D> List<D> mapToDtoList(List<E> entityList, Class<D> dtoClass) {
+        return entityList.stream()
+                .map(entity -> mapToDto(entity, dtoClass))
+                .collect(Collectors.toList());
     }
 
     // Mapeo genérico de campos con el mismo nombre
