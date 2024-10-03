@@ -1,11 +1,7 @@
 package com.fer.practia1jpa.model.entities;
 
 import java.time.LocalDate;
-
-import org.hibernate.annotations.Collate;
-
 import com.fer.practia1jpa.model.enumerated.Cargo;
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
