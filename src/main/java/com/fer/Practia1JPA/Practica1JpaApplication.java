@@ -32,9 +32,10 @@ public class Practica1JpaApplication implements CommandLineRunner {
 		System.out.println("----CLIENTES VIP----");
 		clienteList = clienteService.findByCategoria(Categoria.VIP);
 		clienteList.forEach(cliente -> System.out.println(cliente));
-
-		//clienteList = clienteService.findByCategoriaAndEdadGreaterThan(Categoria.VIP,20);
-		//clienteList.forEach(cliente -> System.out.println(cliente));
+		
+		System.out.println("----CLIENTES VIP Y MAYORES DE 20----");
+		clienteList = clienteService.findByCategoriaAndEdadGreaterThan(Categoria.VIP,20);
+		clienteList.forEach(cliente -> System.out.println(cliente));
 
 	}
 }

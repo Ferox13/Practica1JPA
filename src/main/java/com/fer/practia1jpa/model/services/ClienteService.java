@@ -32,12 +32,12 @@ public class ClienteService {
     return GenericMapper.mapToDtoList(clientes, ClienteDTO.class);
   }
 
-  /* public List<ClienteDTO> findByCategoriaAndEdadGreaterThan(Categoria categoria, int edad) {
+   public List<ClienteDTO> findByCategoriaAndEdadGreaterThan(Categoria categoria, int edad) {
     List<Cliente> clientes = clientesRepository.findByCategoriaAndCalculatedEdadGreaterThan(categoria, edad);
     if (clientes.isEmpty()) {
       throw new RuntimeException("No clients found");
     }
     return GenericMapper.mapToDtoList(clientes, ClienteDTO.class);
 
-  } */
+  } 
 }
