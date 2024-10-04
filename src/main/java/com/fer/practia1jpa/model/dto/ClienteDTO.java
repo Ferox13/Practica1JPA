@@ -6,17 +6,6 @@ import java.util.List;
 import com.fer.practia1jpa.model.entities.Registro;
 import com.fer.practia1jpa.model.enumerated.Categoria;
 
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Column;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.Temporal;
-import jakarta.persistence.TemporalType;
-
 public class ClienteDTO {
 
     private Long id;
