@@ -4,6 +4,7 @@ import java.util.List;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -22,9 +23,9 @@ public class Local {
     private int aforo;
     @Column(name = "metrosCuadrados", nullable = false)
     private double metrosCuadrados;
-    @OneToMany(mappedBy = "local", cascade = CascadeType.ALL, orphanRemoval = true )
+    @OneToMany(mappedBy = "local", cascade = CascadeType.ALL, orphanRemoval = true,fetch = FetchType.EAGER )
     private List<Empleado> empleados;
-    @OneToMany(mappedBy = "local", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "local", cascade = CascadeType.ALL, orphanRemoval = true,fetch = FetchType.EAGER)
     private List<Registro> registros;
     /*     @ManyToMany(mappedBy = "locales", fetch = FetchType.EAGER)
     private Set<Cliente> clientes = new HashSet<>(); */

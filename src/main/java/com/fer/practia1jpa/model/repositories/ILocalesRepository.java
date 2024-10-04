@@ -3,7 +3,12 @@ package com.fer.practia1jpa.model.repositories;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.fer.practia1jpa.model.entities.Local;
+import java.util.List;
+import java.util.Optional;
 
-public interface ILocalesRepository extends JpaRepository<Local,Long> {
+public interface ILocalesRepository extends JpaRepository<Local, Long> {
+    public List<Local> findByAforoBetween(int min, int max);
+
+    public Optional<Local> findById(Long id);
 
 }
