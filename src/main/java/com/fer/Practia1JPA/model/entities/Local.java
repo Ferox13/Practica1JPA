@@ -28,8 +28,57 @@ public class Local {
     private double metrosCuadrados;
     @OneToMany(mappedBy = "local", cascade = CascadeType.ALL, orphanRemoval = true )
     private List<Empleado> empleados;
-    @ManyToMany(mappedBy = "locales", fetch = FetchType.EAGER)
-    private Set<Cliente> clientes = new HashSet<>();
     @OneToMany(mappedBy = "local", cascade = CascadeType.ALL, orphanRemoval = true)
-    private Set<Registro> registros = new HashSet<>();
+    private List<Registro> registros;
+    /*     @ManyToMany(mappedBy = "locales", fetch = FetchType.EAGER)
+    private Set<Cliente> clientes = new HashSet<>(); */
+    public Local() {
+    }
+    public Local(Long id, String nombre, int aforo, double metrosCuadrados, List<Empleado> empleados,
+            List<Registro> registros) {
+        this.id = id;
+        this.nombre = nombre;
+        this.aforo = aforo;
+        this.metrosCuadrados = metrosCuadrados;
+        this.empleados = empleados;
+        this.registros = registros;
+    }
+    public Long getId() {
+        return id;
+    }
+    public void setId(Long id) {
+        this.id = id;
+    }
+    public String getNombre() {
+        return nombre;
+    }
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+    public int getAforo() {
+        return aforo;
+    }
+    public void setAforo(int aforo) {
+        this.aforo = aforo;
+    }
+    public double getMetrosCuadrados() {
+        return metrosCuadrados;
+    }
+    public void setMetrosCuadrados(double metrosCuadrados) {
+        this.metrosCuadrados = metrosCuadrados;
+    }
+    public List<Empleado> getEmpleados() {
+        return empleados;
+    }
+    public void setEmpleados(List<Empleado> empleados) {
+        this.empleados = empleados;
+    }
+    public List<Registro> getRegistros() {
+        return registros;
+    }
+    public void setRegistros(List<Registro> registros) {
+        this.registros = registros;
+    }
+
+    
 }

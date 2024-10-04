@@ -2,6 +2,7 @@ package com.fer.practia1jpa.model.entities;
 
 import java.time.LocalDate;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 
@@ -42,27 +43,30 @@ public class Cliente {
     @Enumerated(EnumType.STRING)
     @Column(name = "categoria", columnDefinition = "Enum('VIP','REGULAR','INVITADO','CASUAL')")
     private Categoria categoria;
-    @ManyToMany
-    @JoinTable(name = "registros", joinColumns = @JoinColumn(name = "cliente_id"), inverseJoinColumns = @JoinColumn(name = "local_id"))
-    private Set<Local> locales = new HashSet<>();
     @OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL, orphanRemoval = true)
-    private Set<Registro> registros = new HashSet<>();
+    private List<Registro> registros;
+     /*  @ManyToMany
+    @JoinTable(name = "registros", joinColumns = @JoinColumn(name = "cliente_id"), inverseJoinColumns = @JoinColumn(name = "local_id"))
+    private Set<Local> locales = new HashSet<>(); */
+    
     public Cliente() {
     }
+
     public Cliente(Long id, String nombre, String apellido1, String apellido2, LocalDate fechaNacimiento,
-            Categoria categoria, Set<Local> locales, Set<Registro> registros) {
+            Categoria categoria, List<Registro> registros) {
         this.id = id;
         this.nombre = nombre;
         this.apellido1 = apellido1;
         this.apellido2 = apellido2;
         this.fechaNacimiento = fechaNacimiento;
         this.categoria = categoria;
-        this.locales = locales;
         this.registros = registros;
     }
+
     public Long getId() {
         return id;
     }
+    
     public void setId(Long id) {
         this.id = id;
     }
@@ -96,18 +100,13 @@ public class Cliente {
     public void setCategoria(Categoria categoria) {
         this.categoria = categoria;
     }
-    public Set<Local> getLocales() {
-        return locales;
-    }
-    public void setLocales(Set<Local> locales) {
-        this.locales = locales;
-    }
-    public Set<Registro> getRegistros() {
+    public List<Registro> getRegistros() {
         return registros;
     }
-    public void setRegistros(Set<Registro> registros) {
+    public void setRegistros(List<Registro> registros) {
         this.registros = registros;
     }
+ 
     
 
 

@@ -13,8 +13,8 @@ INSERT INTO empleados (apellido1, apellido2, fechaNacimiento, telefono, cargo, l
 ('Martínez', 'Rodríguez', '1985-06-15', 987654321, 'SEGURIDAD', 2),
 ('López', 'González', '1992-11-30', 555555555, 'ENCARGADO', 3);
 
-INSERT INTO registros (cliente_id, local_id) VALUES
-(1, 1),
-(1, 2),
-(2, 2),
-(3, 3);
+INSERT INTO registros (cliente_id, local_id, fecha) VALUES
+(1, 1, '2023-10-01'),
+(1, 2, '2023-10-02'),
+(2, 2, '2023-10-03'),
+(3, 3, '2023-10-04');

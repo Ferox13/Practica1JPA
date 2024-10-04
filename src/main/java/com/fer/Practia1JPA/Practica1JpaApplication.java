@@ -23,8 +23,8 @@ public class Practica1JpaApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		List<ClienteDTO> clienteList = clienteService.findAll();
-		clienteList.forEach(cliente -> System.out.println(cliente));
+	//	List<ClienteDTO> clienteList = clienteService.findAll();
+	//	clienteList.forEach(cliente -> System.out.println(cliente));
 
 	}
 }

@@ -35,7 +35,94 @@ public class Empleado {
     private Cargo cargo;
     @ManyToOne(targetEntity = Local.class,fetch = FetchType.EAGER)
     private Local local;
+
+    
+    public Empleado() {
+    }
+
+
+    public Empleado(Long id, String apellido1, String apellido2, LocalDate fechaNacimiento, Long telefono, Cargo cargo,
+            Local local) {
+        this.id = id;
+        this.apellido1 = apellido1;
+        this.apellido2 = apellido2;
+        this.fechaNacimiento = fechaNacimiento;
+        this.telefono = telefono;
+        this.cargo = cargo;
+        this.local = local;
+    }
+
+
+    public Long getId() {
+        return id;
+    }
+
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+
+    public String getApellido1() {
+        return apellido1;
+    }
+
+
+    public void setApellido1(String apellido1) {
+        this.apellido1 = apellido1;
+    }
+
+
+    public String getApellido2() {
+        return apellido2;
+    }
+
+
+    public void setApellido2(String apellido2) {
+        this.apellido2 = apellido2;
+    }
+
+
+    public LocalDate getFechaNacimiento() {
+        return fechaNacimiento;
+    }
+
+
+    public void setFechaNacimiento(LocalDate fechaNacimiento) {
+        this.fechaNacimiento = fechaNacimiento;
+    }
+
+
+    public Long getTelefono() {
+        return telefono;
+    }
+
+
+    public void setTelefono(Long telefono) {
+        this.telefono = telefono;
+    }
+
+
+    public Cargo getCargo() {
+        return cargo;
+    }
+
+
+    public void setCargo(Cargo cargo) {
+        this.cargo = cargo;
+    }
+
+
+    public Local getLocal() {
+        return local;
+    }
+
+
+    public void setLocal(Local local) {
+        this.local = local;
+    }
    
+    
 
 
 
