@@ -1,10 +1,10 @@
 package com.fer.practia1jpa.model.entities;
 
 import java.time.LocalDate;
+import java.time.Period;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-
 
 import com.fer.practia1jpa.model.enumerated.Categoria;
 
@@ -23,6 +23,7 @@ import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
+import jakarta.persistence.Transient;
 
 @Entity
 @Table(name = "clientes")
@@ -45,10 +46,14 @@ public class Cliente {
     private Categoria categoria;
     @OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Registro> registros;
-     /*  @ManyToMany
-    @JoinTable(name = "registros", joinColumns = @JoinColumn(name = "cliente_id"), inverseJoinColumns = @JoinColumn(name = "local_id"))
-    private Set<Local> locales = new HashSet<>(); */
-    
+    /*
+     * @ManyToMany
+     * 
+     * @JoinTable(name = "registros", joinColumns = @JoinColumn(name =
+     * "cliente_id"), inverseJoinColumns = @JoinColumn(name = "local_id"))
+     * private Set<Local> locales = new HashSet<>();
+     */
+
     public Cliente() {
     }
 
@@ -66,49 +71,57 @@ public class Cliente {
     public Long getId() {
         return id;
     }
-    
+
     public void setId(Long id) {
         this.id = id;
     }
+
     public String getNombre() {
         return nombre;
     }
+
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
+
     public String getApellido1() {
         return apellido1;
     }
+
     public void setApellido1(String apellido1) {
         this.apellido1 = apellido1;
     }
+
     public String getApellido2() {
         return apellido2;
     }
+
     public void setApellido2(String apellido2) {
         this.apellido2 = apellido2;
     }
+
     public LocalDate getFechaNacimiento() {
         return fechaNacimiento;
     }
+
     public void setFechaNacimiento(LocalDate fechaNacimiento) {
         this.fechaNacimiento = fechaNacimiento;
     }
+
     public Categoria getCategoria() {
         return categoria;
     }
+
     public void setCategoria(Categoria categoria) {
         this.categoria = categoria;
     }
+
     public List<Registro> getRegistros() {
         return registros;
     }
+
     public void setRegistros(List<Registro> registros) {
         this.registros = registros;
     }
- 
-    
 
-
-    
 }

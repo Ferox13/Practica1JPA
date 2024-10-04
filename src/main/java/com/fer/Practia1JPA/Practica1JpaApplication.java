@@ -9,7 +9,9 @@ import com.fer.practia1jpa.model.services.ClienteService;
 import com.fer.practia1jpa.model.services.EmpleadosService;
 import com.fer.practia1jpa.model.dto.ClienteDTO;
 import com.fer.practia1jpa.model.entities.Cliente;
+import com.fer.practia1jpa.model.enumerated.Categoria;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @SpringBootApplication
@@ -23,8 +25,16 @@ public class Practica1JpaApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-	//	List<ClienteDTO> clienteList = clienteService.findAll();
-	//	clienteList.forEach(cliente -> System.out.println(cliente));
+		List<ClienteDTO> clienteList= new ArrayList<>();;
+			
+		
+		//clienteList.forEach(cliente -> System.out.println(cliente));
+		System.out.println("----CLIENTES VIP----");
+		clienteList = clienteService.findByCategoria(Categoria.VIP);
+		clienteList.forEach(cliente -> System.out.println(cliente));
+
+		//clienteList = clienteService.findByCategoriaAndEdadGreaterThan(Categoria.VIP,20);
+		//clienteList.forEach(cliente -> System.out.println(cliente));
 
 	}
 }
