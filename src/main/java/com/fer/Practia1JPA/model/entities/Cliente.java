@@ -3,6 +3,7 @@ package com.fer.practia1jpa.model.entities;
 import java.time.LocalDate;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fer.practia1jpa.model.enumerated.Categoria;
 
 import jakarta.persistence.CascadeType;
@@ -38,7 +39,9 @@ public class Cliente {
     @Enumerated(EnumType.STRING)
     @Column(name = "categoria", columnDefinition = "Enum('VIP','REGULAR','INVITADO','CASUAL')")
     private Categoria categoria;
-    @OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL, orphanRemoval = true,fetch = FetchType.EAGER)
+    
+    @OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
+    @JsonIgnore
     private List<Registro> registros;
     /*
      * @ManyToMany

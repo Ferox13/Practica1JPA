@@ -32,7 +32,7 @@ public class Practica1JpaApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		List<ClienteDTO> clienteList = new ArrayList<>();
+		/* List<ClienteDTO> clienteList = new ArrayList<>();
 		List<LocalDTO> localList = new ArrayList<>();
 		EmpleadoDTO empleadoDTO = new EmpleadoDTO();
 
@@ -85,6 +85,6 @@ public class Practica1JpaApplication implements CommandLineRunner {
 		clienteDTO = clienteService.findById(4);
 		clienteService.deleteCliente(clienteDTO);
 		System.out.println("CLIENTE ELIMINADO");
-
+ */
 	}
 }

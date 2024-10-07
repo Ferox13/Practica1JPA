@@ -3,6 +3,8 @@ package com.fer.practia1jpa.model.entities;
 import java.io.Serializable;
 import java.time.LocalDate;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -16,17 +18,20 @@ import jakarta.persistence.TemporalType;
 
 @Entity
 @Table(name = "registros")
-public class Registro implements Serializable {
+public class Registro  {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @ManyToOne
     @JoinColumn(name = "cliente_id")
+    @JsonIgnore 
     private Cliente cliente;
+
 
     @ManyToOne
     @JoinColumn(name = "local_id")
+    @JsonIgnore 
     private Local local;
 
     @Column(name = "fechaRegistro", nullable = false)
