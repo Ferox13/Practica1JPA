@@ -8,16 +8,19 @@ import org.springframework.stereotype.Service;
 
 import com.fer.practia1jpa.model.dto.LocalDTO;
 import com.fer.practia1jpa.model.entities.Local;
-import com.fer.practia1jpa.model.mapper.GenericMapper;
+import com.fer.practia1jpa.model.mapper.LocalMapper;
 import com.fer.practia1jpa.model.repositories.ILocalesRepository;
 
 @Service
 public class LocalesService {
     @Autowired
     private ILocalesRepository localRepository;
+    @Autowired
+    private LocalMapper localMapper;
 
-    public LocalesService(ILocalesRepository localRepository) {
+    public LocalesService(ILocalesRepository localRepository,LocalMapper localMapper) {
         this.localRepository = localRepository;
+        this.localMapper=localMapper;
     }
 
     public List<LocalDTO> findByAforoBetween(int min, int max) {
@@ -25,7 +28,7 @@ public class LocalesService {
         if (local.isEmpty()) {
             throw new RuntimeException("No locales found");
         }
-        return GenericMapper.mapToDtoList(local, LocalDTO.class);
+        return localMapper.toDtoList(local);
 
     }
 
@@ -34,8 +37,18 @@ public class LocalesService {
         if (!localOptional.isPresent()) {
             throw new RuntimeException("No locales found");
         }
-        return GenericMapper.mapToDto(localOptional.get(), LocalDTO.class);
+        return localMapper.toDto(localOptional.get());
 
     }
+    public LocalDTO findByNombre(String nombre) {
+        Optional<Local> localOptional = localRepository.findByNombre(nombre);
+        if (!localOptional.isPresent()) {
+            throw new RuntimeException("No locales found");
+        }
+        return localMapper.toDto(localOptional.get());
+
+    }
+    
+
 
 }

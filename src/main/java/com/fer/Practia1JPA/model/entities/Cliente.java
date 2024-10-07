@@ -1,10 +1,7 @@
 package com.fer.practia1jpa.model.entities;
 
 import java.time.LocalDate;
-import java.time.Period;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 import com.fer.practia1jpa.model.enumerated.Categoria;
 

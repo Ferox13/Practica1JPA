@@ -14,5 +14,5 @@ public class RegistrosService {
         this.registroRepository = registroRepository;
     }
     
-
+    
 }

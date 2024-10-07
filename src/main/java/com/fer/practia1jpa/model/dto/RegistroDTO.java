@@ -5,19 +5,23 @@ import java.time.LocalDate;
 public class RegistroDTO {
 
     private Long id;
-    private ClienteDTO clienteDTO;
-    private LocalDTO localDTO;
+    private ClienteDTO cliente;
+    private LocalDTO local;
     private LocalDate fechaRegistro;
 
     public RegistroDTO() {
     }
 
-    public RegistroDTO(Long id, ClienteDTO clienteDTO, LocalDTO localDTO, LocalDate fechaRegistro) {
+  
+
+    public RegistroDTO(Long id, ClienteDTO cliente, LocalDTO local, LocalDate fechaRegistro) {
         this.id = id;
-        this.clienteDTO = clienteDTO;
-        this.localDTO = localDTO;
+        this.cliente = cliente;
+        this.local = local;
         this.fechaRegistro = fechaRegistro;
     }
+
+
 
     public Long getId() {
         return id;
@@ -27,21 +31,8 @@ public class RegistroDTO {
         this.id = id;
     }
 
-    public ClienteDTO getClienteDTO() {
-        return clienteDTO;
-    }
+   
 
-    public void setClienteDTO(ClienteDTO clienteDTO) {
-        this.clienteDTO = clienteDTO;
-    }
-
-    public LocalDTO getLocalDTO() {
-        return localDTO;
-    }
-
-    public void setLocalDTO(LocalDTO localDTO) {
-        this.localDTO = localDTO;
-    }
 
     public LocalDate getFechaRegistro() {
         return fechaRegistro;
@@ -54,6 +45,30 @@ public class RegistroDTO {
     @Override
     public String toString() {
         return "RegistroDTO [id=" + id + ", fechaRegistro=" + fechaRegistro + "]";
+    }
+
+
+
+    public LocalDTO getLocal() {
+        return local;
+    }
+
+
+
+    public void setLocal(LocalDTO local) {
+        this.local = local;
+    }
+
+
+
+    public ClienteDTO getCliente() {
+        return cliente;
+    }
+
+
+
+    public void setCliente(ClienteDTO cliente) {
+        this.cliente = cliente;
     }
 
 }

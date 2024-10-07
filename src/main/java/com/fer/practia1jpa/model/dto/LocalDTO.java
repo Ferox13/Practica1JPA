@@ -10,21 +10,21 @@ public class LocalDTO {
     private String nombre;
     private int aforo;
     private double metrosCuadrados;
-    private List<EmpleadoDTO> empleadosDTO;
-    private List<RegistroDTO> registrosDTO;
+    private List<EmpleadoDTO> empleados;
+    private List<RegistroDTO> registros;
 
     public LocalDTO() {
     }
 
    
-    public LocalDTO(Long id, String nombre, int aforo, double metrosCuadrados, List<EmpleadoDTO> empleadosDTO,
-            List<RegistroDTO> registrosDTO) {
+    public LocalDTO(Long id, String nombre, int aforo, double metrosCuadrados, List<EmpleadoDTO> empleados,
+            List<RegistroDTO> registros) {
         this.id = id;
         this.nombre = nombre;
         this.aforo = aforo;
         this.metrosCuadrados = metrosCuadrados;
-        this.empleadosDTO = empleadosDTO;
-        this.registrosDTO = registrosDTO;
+        this.empleados = empleados;
+        this.registros = registros;
     }
     
 
@@ -69,23 +69,23 @@ public class LocalDTO {
     }
 
 
-    public List<EmpleadoDTO> getEmpleadosDTO() {
-        return empleadosDTO;
+    public List<EmpleadoDTO> getempleados() {
+        return empleados;
     }
 
 
-    public void setEmpleadosDTO(List<EmpleadoDTO> empleadosDTO) {
-        this.empleadosDTO = empleadosDTO;
+    public void setempleados(List<EmpleadoDTO> empleados) {
+        this.empleados = empleados;
     }
 
 
-    public List<RegistroDTO> getRegistrosDTO() {
-        return registrosDTO;
+    public List<RegistroDTO> getregistros() {
+        return registros;
     }
 
 
-    public void setRegistrosDTO(List<RegistroDTO> registrosDTO) {
-        this.registrosDTO = registrosDTO;
+    public void setregistros(List<RegistroDTO> registros) {
+        this.registros = registros;
     }
 
 

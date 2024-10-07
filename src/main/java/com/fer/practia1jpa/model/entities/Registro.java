@@ -75,5 +75,4 @@ public class Registro implements Serializable {
         this.fechaRegistro = fechaRegistro;
     }
 
-    
 }
