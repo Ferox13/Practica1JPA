@@ -10,6 +10,7 @@ public interface ILocalesRepository extends JpaRepository<Local, Long> {
     public List<Local> findByAforoBetween(int min, int max);
 
     public Optional<Local> findById(Long id);
+    
     public Optional<Local> findByNombre(String nombre);
 
 }

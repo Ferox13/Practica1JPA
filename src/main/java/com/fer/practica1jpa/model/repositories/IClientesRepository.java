@@ -17,8 +17,9 @@ public interface IClientesRepository extends JpaRepository<Cliente, Long> {
 
     public List<Cliente> findByCategoria(Categoria categoria);
 
+
     @Query("SELECT c FROM Cliente c WHERE c.categoria = :categoria AND FUNCTION('YEAR', CURRENT_DATE) - FUNCTION('YEAR', c.fechaNacimiento) > :edad")
-    List<Cliente> findByCategoriaAndCalculatedEdadGreaterThan(@Param("categoria") Categoria categoria,
+   public List<Cliente> findByCategoriaAndCalculatedEdadGreaterThan(@Param("categoria") Categoria categoria,
             @Param("edad") int edad);
 
     public Optional<Cliente> findById(Long id);

@@ -1,32 +1,19 @@
 package com.fer.practica1jpa.model.mapper;
-import org.modelmapper.ModelMapper;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 
-import com.fer.practica1jpa.model.entities.Empleado;
+import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
+import org.mapstruct.factory.Mappers;
 
 import com.fer.practica1jpa.model.dto.EmpleadoDTO;
+import com.fer.practica1jpa.model.entities.Empleado;
 
-import java.util.List;
-import java.util.stream.Collectors;
+@Mapper(componentModel = "spring", uses = {LocalMapper.class})
+public interface EmpleadoMapper {
+    EmpleadoMapper INSTANCE = Mappers.getMapper(EmpleadoMapper.class);
 
-@Component
-public class EmpleadoMapper {
+    @Mapping(target = "local.empleados", ignore = true)
+    EmpleadoDTO empleadoToEmpleadoDTO(Empleado empleado);
 
-    @Autowired
-    private ModelMapper modelMapper;
-
-    public EmpleadoDTO toDto(Empleado empleado) {
-        return modelMapper.map(empleado, EmpleadoDTO.class);
-    }
-
-    public List<EmpleadoDTO> toDtoList(List<Empleado> empleados) {
-        return empleados.stream()
-                .map(this::toDto)
-                .collect(Collectors.toList());
-    }
-
-    public Empleado fromDto(EmpleadoDTO empleadoDTO) {
-        return modelMapper.map(empleadoDTO, Empleado.class);
-    }
+    @Mapping(target = "local.empleados", ignore = true)
+    Empleado empleadoDTOToEmpleado(EmpleadoDTO empleadoDTO);
 }

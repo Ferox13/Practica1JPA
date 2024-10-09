@@ -41,7 +41,6 @@ public class Cliente {
     private Categoria categoria;
     
     @OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
-    @JsonIgnore
     private List<Registro> registros;
     /*
      * @ManyToMany

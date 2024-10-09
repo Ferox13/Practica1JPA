@@ -8,9 +8,7 @@ public class RegistroDTO {
 
     private Long id;
     private LocalDate fechaRegistro;
-    @JsonBackReference
     private ClienteDTO clienteDTO;
-    @JsonBackReference
     private LocalDTO localDTO;
 
     public RegistroDTO() {

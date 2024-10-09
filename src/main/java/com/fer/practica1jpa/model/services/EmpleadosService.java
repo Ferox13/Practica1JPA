@@ -2,6 +2,8 @@ package com.fer.practica1jpa.model.services;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -24,22 +26,25 @@ public class EmpleadosService {
         this.empleadosRepository = empleadosRepository;
         this.empleadoMapper = empleadoMapper;
     }
-
-    public EmpleadoDTO findById(long id) {
-        Optional<Empleado> empleadoOptional = empleadosRepository.findById(id);
-        if (!empleadoOptional.isPresent()) {
-            throw new RuntimeException("No locales found");
-        }
-        return empleadoMapper.toDto(empleadoOptional.get());
-
-    }
+    /*
+     * public EmpleadoDTO findById(long id) {
+     * Optional<Empleado> empleadoOptional = empleadosRepository.findById(id);
+     * if (!empleadoOptional.isPresent()) {
+     * throw new RuntimeException("No locales found");
+     * }
+     * return empleadoMapper.toDto(empleadoOptional.get());
+     * 
+     * }
+     */
 
     public List<EmpleadoDTO> findAll() {
         List<Empleado> empleados = empleadosRepository.findAll();
         if (empleados.isEmpty()) {
             throw new RuntimeException("No empleado found");
         }
-        return empleadoMapper.toDtoList(empleados);
+        return empleados.stream()
+                .map(empleadoMapper::empleadoToEmpleadoDTO)
+                .collect(Collectors.toList());
     }
 
 }
