@@ -1,9 +1,13 @@
 package com.fer.practica1jpa.model.services;
 
+import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import com.fer.practica1jpa.model.dto.ClienteDTO;
 import com.fer.practica1jpa.model.dto.EmpleadoDTO;
+import com.fer.practica1jpa.model.entities.Cliente;
 import com.fer.practica1jpa.model.entities.Empleado;
 import com.fer.practica1jpa.model.mapper.EmpleadoMapper;
 import com.fer.practica1jpa.model.repositories.IEmpleadosRepository;
@@ -28,6 +32,14 @@ public class EmpleadosService {
         }
         return empleadoMapper.toDto(empleadoOptional.get());
 
+    }
+
+    public List<EmpleadoDTO> findAll() {
+        List<Empleado> empleados = empleadosRepository.findAll();
+        if (empleados.isEmpty()) {
+            throw new RuntimeException("No empleado found");
+        }
+        return empleadoMapper.toDtoList(empleados);
     }
 
 }

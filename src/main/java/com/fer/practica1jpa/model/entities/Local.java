@@ -28,6 +28,7 @@ public class Local {
     @Column(name = "metrosCuadrados", nullable = false)
     private double metrosCuadrados;
     @OneToMany(mappedBy = "local", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
+    @JsonIgnore
     private List<Empleado> empleados;
     @OneToMany(mappedBy = "local", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
     @JsonIgnore

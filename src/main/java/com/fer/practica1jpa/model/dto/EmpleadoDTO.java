@@ -2,7 +2,11 @@ package com.fer.practica1jpa.model.dto;
 
 import java.time.LocalDate;
 
+import org.mapstruct.Mapper;
+
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fer.practica1jpa.model.enumerated.Cargo;
+
 
 public class EmpleadoDTO {
     private Long id;
@@ -11,6 +15,7 @@ public class EmpleadoDTO {
     private LocalDate fechaNacimiento;
     private Long telefono;
     private Cargo cargo;
+    @JsonManagedReference
     private LocalDTO local;
 
     public EmpleadoDTO() {

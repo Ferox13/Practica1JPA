@@ -3,6 +3,7 @@ package com.fer.practica1jpa.model.dto;
 import java.time.LocalDate;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fer.practica1jpa.model.enumerated.Categoria;
 
 public class ClienteDTO {
@@ -13,6 +14,7 @@ public class ClienteDTO {
     private String apellido2;
     private LocalDate fechaNacimiento;
     private Categoria categoria;
+    @JsonManagedReference
     private List<RegistroDTO> registros;
 
     public ClienteDTO() {

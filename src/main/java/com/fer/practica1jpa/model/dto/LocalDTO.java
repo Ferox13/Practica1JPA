@@ -2,6 +2,9 @@ package com.fer.practica1jpa.model.dto;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 
 
 public class LocalDTO {
@@ -10,7 +13,9 @@ public class LocalDTO {
     private String nombre;
     private int aforo;
     private double metrosCuadrados;
+    @JsonBackReference
     private List<EmpleadoDTO> empleados;
+    @JsonManagedReference
     private List<RegistroDTO> registros;
 
     public LocalDTO() {
