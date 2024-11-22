@@ -1,34 +1,25 @@
 package com.fer.practica1jpa.model.mapper;
 
-import java.util.List;
-import java.util.stream.Collectors;
-
-import org.modelmapper.ModelMapper;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
+import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
+import org.mapstruct.factory.Mappers;
 
 import com.fer.practica1jpa.model.dto.ClienteDTO;
+import com.fer.practica1jpa.model.dto.RegistroDTO;
 import com.fer.practica1jpa.model.entities.Cliente;
+import com.fer.practica1jpa.model.entities.Registro;
 
-@Component
-public class ClienteMapper {
+import java.util.List;
 
-    @Autowired
-    private ModelMapper modelMapper;
+@Mapper(componentModel = "spring")
+public interface ClienteMapper {
+    ClienteMapper INSTANCE = Mappers.getMapper(ClienteMapper.class);
 
-    public ClienteDTO toDto(Cliente cliente) {
-        return modelMapper.map(cliente, ClienteDTO.class);
-    }
+    @Mapping(target = "registros")
+    ClienteDTO clienteToClienteDTO(Cliente cliente);
 
-    public List<ClienteDTO> toDtoList(List<Cliente> Clientes) {
-        return Clientes.stream()
-                .map(this::toDto)
-                .collect(Collectors.toList());
-    }
+    @Mapping(target = "registros")
+    Cliente clienteDTOToCliente(ClienteDTO clienteDTO);
 
-
-    public Cliente fromDto(ClienteDTO ClienteDTO) {
-        return modelMapper.map(ClienteDTO, Cliente.class);
-    }
-
+   
 }

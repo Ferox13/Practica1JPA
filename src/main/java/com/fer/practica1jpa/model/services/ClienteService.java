@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import com.fer.practica1jpa.model.repositories.IClientesRepository;
 import com.fer.practica1jpa.model.dto.ClienteDTO;
@@ -18,8 +19,10 @@ public class ClienteService {
   @Autowired
   private ClienteMapper clienteMapper;
 
-  public ClienteService(IClientesRepository clientesRepository) {
+
+  public ClienteService(IClientesRepository clientesRepository, ClienteMapper clienteMapper) {
     this.clientesRepository = clientesRepository;
+    this.clienteMapper = clienteMapper;
   }
 
   public List<ClienteDTO> findAll() {
@@ -27,7 +30,10 @@ public class ClienteService {
     if (clientes.isEmpty()) {
       throw new RuntimeException("No clients found");
     }
-    return clienteMapper.toDtoList(clientes);
+    return clientes.stream()
+        .map(clienteMapper::clienteToClienteDTO)
+        .collect(Collectors.toList());
+    
   }
 
   public List<ClienteDTO> findByCategoria(Categoria category) {
@@ -35,7 +41,9 @@ public class ClienteService {
     if (clientes.isEmpty()) {
       throw new RuntimeException("No client found for category: " + category);
     }
-    return clienteMapper.toDtoList(clientes);
+    return clientes.stream()
+    .map(clienteMapper::clienteToClienteDTO)
+    .collect(Collectors.toList());
   }
 
   public List<ClienteDTO> findByCategoriaAndEdadGreaterThan(Categoria categoria, int edad) {
@@ -43,7 +51,9 @@ public class ClienteService {
     if (clientes.isEmpty()) {
       throw new RuntimeException("No clients found");
     }
-    return clienteMapper.toDtoList(clientes);
+    return clientes.stream()
+    .map(clienteMapper::clienteToClienteDTO)
+    .collect(Collectors.toList());
   }
 
   public ClienteDTO findById(long id) {
@@ -51,20 +61,20 @@ public class ClienteService {
     if (!optionalCliente.isPresent()) {
       throw new RuntimeException("No clients found");
     }
-    return clienteMapper.toDto(optionalCliente.get());
+    return clienteMapper.clienteToClienteDTO(optionalCliente.get());
   }
 
   public ClienteDTO saveClient(ClienteDTO clienteDTO) {
-    Cliente nuevoCliente = clienteMapper.fromDto(clienteDTO);
+    Cliente nuevoCliente = clienteMapper.clienteDTOToCliente(clienteDTO);
     Cliente savedCliente = clientesRepository.save(nuevoCliente);
     if (savedCliente == null || savedCliente.getId() == null) {
       throw new RuntimeException("Failed to save client");
     }
-    return clienteMapper.toDto(savedCliente);
+    return clienteMapper.clienteToClienteDTO(savedCliente);
   }
 
   public void deleteCliente(ClienteDTO clienteDTO) {
-    Cliente cliente = clienteMapper.fromDto(clienteDTO);
+    Cliente cliente = clienteMapper.clienteDTOToCliente(clienteDTO);
     clientesRepository.delete(cliente);
     if (clientesRepository.existsById(cliente.getId())) {
       throw new RuntimeException("Failed to delete client");

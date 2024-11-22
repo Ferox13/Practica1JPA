@@ -39,8 +39,7 @@ public class Cliente {
     @Enumerated(EnumType.STRING)
     @Column(name = "categoria", columnDefinition = "Enum('VIP','REGULAR','INVITADO','CASUAL')")
     private Categoria categoria;
-    
-    @OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
     private List<Registro> registros;
     /*
      * @ManyToMany

@@ -33,7 +33,7 @@ public class Empleado {
     @Enumerated(EnumType.STRING)
     @Column(name = "cargo", nullable = false, columnDefinition = "Enum('CAMARERO','SEGURIDAD','ENCARGADO')")
     private Cargo cargo;
-    @ManyToOne(targetEntity = Local.class,fetch = FetchType.EAGER)
+    @ManyToOne(targetEntity = Local.class,fetch = FetchType.LAZY)
     private Local local;
 
     

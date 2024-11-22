@@ -15,13 +15,13 @@ public class ClienteDTO {
     private LocalDate fechaNacimiento;
     private Categoria categoria;
     @JsonManagedReference
-    private List<RegistroDTO> registros;
+    private List<RegistroClienteDTO> registros;
 
     public ClienteDTO() {
     }
 
     public ClienteDTO(Long id, String nombre, String apellido1, String apellido2, LocalDate fechaNacimiento,
-            Categoria categoria, List<RegistroDTO> registros) {
+            Categoria categoria, List<RegistroClienteDTO> registros) {
         this.id = id;
         this.nombre = nombre;
         this.apellido1 = apellido1;
@@ -39,7 +39,7 @@ public class ClienteDTO {
     }
 
     public ClienteDTO(String nombre, String apellido1, String apellido2, LocalDate fechaNacimiento, Categoria categoria,
-            List<RegistroDTO> registros) {
+            List<RegistroClienteDTO> registros) {
         this.nombre = nombre;
         this.apellido1 = apellido1;
         this.apellido2 = apellido2;
@@ -103,11 +103,11 @@ public class ClienteDTO {
                 + "]";
     }
 
-    public List<RegistroDTO> getregistros() {
+    public List<RegistroClienteDTO> getregistros() {
         return registros;
     }
 
-    public void setregistros(List<RegistroDTO> registros) {
+    public void setregistros(List<RegistroClienteDTO> registros) {
         this.registros = registros;
     }
 

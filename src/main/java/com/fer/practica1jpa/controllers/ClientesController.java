@@ -22,7 +22,7 @@ public class ClientesController {
         this.clientesService = clientesService;
     }
 
-    @GetMapping("/all")
+    @GetMapping()
     List<ClienteDTO> all() {
         try {
             return clientesService.findAll();
